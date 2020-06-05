@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "763927796971",
+    "firebase_url": "https://loundary-system.firebaseio.com",
+    "project_id": "loundary-system",
+    "storage_bucket": "loundary-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763927796971:android:5f1851985509f2eedeb2ae",
+        "android_client_info": {
+          "package_name": "com.nitcloundary.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763927796971-p3rr904jqred5l77q6m0sfv3lveutcrd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nitcloundary.app",
+            "certificate_hash": "bd5951fd52a2e5972774460a2a97e3eb1eeea971"
+          }
+        },
+        {
+          "client_id": "763927796971-l3h3dptj62h4jea5itkadmbbbohia148.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaAOEelixIMMuqJ18Ta4sjiItfOlZCpBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763927796971-l3h3dptj62h4jea5itkadmbbbohia148.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
