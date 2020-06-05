@@ -1,12 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import './User/Screens/home.dart';
-
+import 'User/Screens/login.dart';
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  ///mnnkmnm
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,13 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   String _value;
 
   @override
@@ -72,7 +74,22 @@ class _MyHomePageState extends State<MyHomePage> {
   void choose() {
     if (_value == "three") {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => StreamBuilder(
+          stream: _auth.onAuthStateChanged,
+          builder: (ctx, AsyncSnapshot<FirebaseUser> snapshot) {
+            if (snapshot.hasData) {
+              FirebaseUser user = snapshot.data;
+              if (user != null) {
+                return HomePage();
+              } else {
+                return SignInScreen();
+              }
+            }
+
+            return SignInScreen();
+          })
+      )
+      );
     } else if (_value == "ShopKepper") {
     } else if (_value == "Admin") {}
   }

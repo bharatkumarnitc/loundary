@@ -1,17 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
+  @override
+  _AppDrawerState createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  FirebaseUser _user;
+
+  final Firestore _db = Firestore.instance;
+
+  @override
+  void initState() {
+    fetechUserData();
+
+    super.initState();
+  }
+
+  void fetechUserData() async {
+    FirebaseUser u = await _auth.currentUser();
+    setState(() {
+      _user = u;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
+      child:_user!=null? Column(
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountEmail: Text("Bhart.rock@gmail.com"),
-            accountName: Text("Bharat"),
+            accountEmail: Text(_user.email),
+            accountName: Text(_user.displayName),
             decoration: BoxDecoration(
+
                 image: DecorationImage(
-              image: ExactAssetImage('assets/placeholder.jpg'),
+              image: NetworkImage(_user.photoUrl),
               fit: BoxFit.cover,
             )
             ),
@@ -43,7 +71,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
         ],
-      ),
+      ):LinearProgressIndicator(),
     );
   }
 }
