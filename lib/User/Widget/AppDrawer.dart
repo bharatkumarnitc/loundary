@@ -70,6 +70,17 @@ class _AppDrawerState extends State<AppDrawer> {
               //     .pushReplacementNamed();
             },
           ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.exit_to_app),
+            title: Text('Logout'),
+            onTap: ()
+            {
+              _auth.signOut();
+
+            },
+          ),
+
         ],
       ):LinearProgressIndicator(),
     );
